@@ -19,25 +19,22 @@ function Source.get_metadata(self)
   }
 end
 
-function Source.datermine(self, context)
+function Source.determine(self, context)
   local offset = vim.regex('[0-9a-zA-Z.!$%&*+/:<=>?#_~\\^\\-\\\\]\\+$'):match_str(context.before_line)
-  if not offset then
-    return {}
-  end
+  if not offset then return {} end
+
   local trigger
+
   if vim.fn.index({'.'}, context.before_char) >= 0 or vim.fn.index({'/'}, context.before_char) >= 0 then
     trigger = context.col
   else
     trigger = -1
   end
-  -- if vim.bo.filetype == 'fennel' then
-    return {
-      keyword_pattern_offset = offset + 1,
-      trigger_character_offset =  trigger
-    }
-  -- else
-    -- return { keyword_pattern_offset = offset + 1, }
-  -- end
+
+  return {
+    keyword_pattern_offset = offset + 1,
+    trigger_character_offset =  trigger
+  }
 end
 
 function Source.complete(self, args)

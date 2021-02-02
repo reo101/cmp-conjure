@@ -4,17 +4,21 @@ compe-nvim source for conjure
 ## Usage 
 
 Make sure that compe-nvim is loaded.
+
+```vim
+let g:compe.source.conjure = v:true
+```
+
 ```clojure
-((. (require :compe_conjure) :attach))
+((. (require :compe) :setup) 
+ {:source 
+   {:conjure true})
 ```
 
 ```lua
-require'compe_conjure'.attach()
+require'compe'.setup {
+  source = {
+      conjure = true
+    }
+}
 ```
-
-## TODO
-
-- Fix the slight delay when initializing the source for the first time.
-- Add extra source to fennel https://github.com/gbaptista/sublime-text-fennel/blob/master/Fennel.sublime-completions
-- Hide suffix until the prefix is written with `.`
-
