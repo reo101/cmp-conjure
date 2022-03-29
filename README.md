@@ -1,24 +1,21 @@
-# compe-conjure
-compe-nvim source for conjure
+# cmp-conjure
+nvim-cmp source for conjure
 
-## Usage 
+## Setup 
 
-Make sure that compe-nvim is loaded.
-
-```vim
-let g:compe.source.conjure = v:true
-```
+Make sure that nvim-cmp is loaded.
 
 ```clojure
-((. (require :compe) :setup) 
- {:source 
-   {:conjure true})
+((. (require :cmp) :setup)
+  {:sources
+    {1 
+      {:name :conjure}}})	
 ```
 
 ```lua
-require'compe'.setup {
-  source = {
-      conjure = true
-    }
-}
+require("cmp").setup({
+    sources = {
+        { name = "conjure" },
+    },
+})
 ```
